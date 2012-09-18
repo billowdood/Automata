@@ -1,0 +1,1 @@
+Programa en Java que simula los automatas celulares.
