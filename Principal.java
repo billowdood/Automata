@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -9,6 +10,8 @@ public class Principal extends JFrame implements ActionListener{
 	private Container layout;
 	private JTextField text = new JTextField("Numero de Regla",3);
 	private JRadioButton[] radio = new JRadioButton[2];
+	private JButton button = new JButton("Generar Automata");
+	private int radioButton;
 
 	private void mostrar(){
 		layout = this.getContentPane();
@@ -29,22 +32,34 @@ public class Principal extends JFrame implements ActionListener{
 		this.add(radio[0]);
 		this.add(radio[1]);
 		//
+		button.setActionCommand("3");
+		button.addActionListener(this);
+		this.add(button);
 		this.setSize(250,250);
 		this.setVisible(true);
 	}
 
     public void actionPerformed(ActionEvent e) {
+    	if(Integer.parseInt(e.getActionCommand()) != 3){
+     		radioButton = Integer.parseInt(e.getActionCommand());
+     	}
      	try{
-    		int regla = Integer.parseInt(text.getText());
-   			System.out.println("Text "+regla);
-   			if(Integer.parseInt(e.getActionCommand()) == 0){
-   				AutomataGui gui = new AutomataGui(regla,0);
-				gui.mostrar();	
-   			}
-    		if(Integer.parseInt(e.getActionCommand()) == 1){
-   				AutomataGui gui = new AutomataGui(regla,1);
-				gui.mostrar();	
-   			}	
+     		if(Integer.parseInt(e.getActionCommand()) == 3){
+	    		int regla = Integer.parseInt(text.getText());
+	    		if(regla >= 0 && regla <=256){
+	    			
+    				if(radioButton == 0){
+    					System.out.println("Text "+regla);
+    					AutomataGui gui = new AutomataGui(regla,0);
+						gui.mostrar();	
+    				}
+	    			if(radioButton == 1){
+	    				System.out.println("Text "+regla);
+    					AutomataGui gui = new AutomataGui(regla,1);
+						gui.mostrar();	
+    				}
+    			}
+    		}	
     	}catch(NumberFormatException ne){
     		System.out.println("La regla no es un numero!");
     	}

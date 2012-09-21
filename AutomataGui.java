@@ -16,7 +16,7 @@ public class AutomataGui extends Canvas{
     private int[] generacionAnterior;
     private int[] generacionNueva;
     private int[] coeficientes = new int[4];
-    private int rand;
+    private int rand,contador = 0;
 
     public AutomataGui(int regla,int rand){
         automata = new Automata(regla);
@@ -32,6 +32,7 @@ public class AutomataGui extends Canvas{
         ancho = dimension.height;
         generacionAnterior = new int[largo];
         generacionNueva = new int[largo];
+        contador++;
         if(rand == 1)
             primerGeneracionGeneral();
         else
@@ -40,11 +41,11 @@ public class AutomataGui extends Canvas{
             for(j = 0;j < largo;j++){
                 //Si en la generacion hay 1,pintar
                 if(generacionAnterior[j] == 1){
-                    g.setColor(Color.black);
+                    g.setColor(Color.green);
                     g.drawLine(j,i,j,i);
                 }
                 else{
-                    g.setColor(Color.white);
+                    g.setColor(Color.black);
                     g.drawLine(j,i,j,i);
                 }
             }
