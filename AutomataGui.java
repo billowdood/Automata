@@ -41,11 +41,11 @@ public class AutomataGui extends Canvas{
             for(j = 0;j < largo;j++){
                 //Si en la generacion hay 1,pintar
                 if(generacionAnterior[j] == 1){
-                    g.setColor(Color.green);
+                    g.setColor(Color.black);
                     g.drawLine(j,i,j,i);
                 }
                 else{
-                    g.setColor(Color.black);
+                    g.setColor(Color.white);
                     g.drawLine(j,i,j,i);
                 }
             }
